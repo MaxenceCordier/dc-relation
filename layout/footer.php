@@ -1,8 +1,8 @@
     </main>
 
-    <footer class="site-footer">
-        <div class="container">
-            Copyright © 2013 Ecolidaire
+    <footer>
+        <div>
+            Copyright © 2018 DC-Relation
         </div>
     </footer>
 

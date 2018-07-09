@@ -1,5 +1,6 @@
 <?php
 
+
 require_once __DIR__ . '/../config/parameters.php';
 
 try {
@@ -19,6 +20,7 @@ foreach ($files as $file) {
         require_once $entity_dir . $file;
     }
 }
+
 
 function getAllEntity(string $table) {
     /* @var $connection PDO */
