@@ -7,7 +7,11 @@ getHeader("Accueil");
 ?>
 
 salut
+<<<<<<< HEAD
 <?php  $listeEtudiants = getAllEtudiants(); ?>
+=======
+<?php  $listeEtudiants = getAllUtilisateurs(); ?>
+>>>>>>> master
 
 <?php print_r($listeEtudiants); ?>
 
