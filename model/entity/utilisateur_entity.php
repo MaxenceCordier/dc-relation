@@ -4,10 +4,17 @@ function getUserByEmailPassword(string $email, string $password) {
     /* @var $connection PDO */
     global $connection;
 
-    $query = "SELECT *
+    $query = "SELECT
+            	  utilisateur.*,
+                admin.id AS admin,
+                etudiant.id AS etudiant,
+                entreprise.id AS entreprise
             FROM utilisateur
+            LEFT JOIN admin ON admin.id = utilisateur.id
+            LEFT JOIN etudiant ON etudiant.id = utilisateur.id
+            LEFT JOIN entreprise ON entreprise.id = utilisateur.id
             WHERE email = :email
-            AND password = SHA1(:mot_de_passe);";
+            AND mot_de_passe = SHA1(:password);";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":email", $email);
@@ -32,12 +39,12 @@ function getOneUser(int $id) {
     return $stmt->fetch();
 }
 
-function insertUtilisateur(string $email, string $password) {
+function insertUtilisateur(string $email, string $password, string $type) {
     /* @var $connection PDO */
     global $connection;
 
     $query = "INSERT INTO utilisateur (email, mot_de_passe, date_inscription)
-                VALUES (:email, :password, :date_inscription);";
+                VALUES (:email, SHA1(:password), NOW());";
 
       /*$query = "INSERT INTO utilisateur(email, mot_de_passe, date_insciption)
               SELECT * FROM (SELECT ':email', :mot_de_passe, :date_insciption) AS tmp
@@ -50,20 +57,29 @@ function insertUtilisateur(string $email, string $password) {
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":email", $email);
     $stmt->bindParam(":password", $password);
-    $newDate = new DateTime();
-    $newDate = $newDate->format('Y-m-d H:i:s');
-    $stmt->bindParam(":date_inscription", $newDate);
     $stmt->execute();
+
+    $id = $connection->lastInsertId();
+
+    if ($type == 'etudiant') {
+      $query = "INSERT INTO etudiant (id) VALUES (:id);";
+      $stmt = $connection->prepare($query);
+      $stmt->bindParam(":id", $id);
+      $stmt->execute();
+    }
 }
 
-function getAllUtilisateurs() {
+function getAllEtudiants() {
     /* @var $connection PDO */
     global $connection;
 
-    $query = "SELECT
-              *
+    $query = "SELECT utilisateur.email
               FROM
-              utilisateur;";
+              utilisateur
+              INNER JOIN etudiant
+              ON etudiant.id = utilisateur.id
+
+              ;";
 
     $stmt = $connection->prepare($query);
     $stmt->execute();

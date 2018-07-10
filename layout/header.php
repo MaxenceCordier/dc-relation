@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php require_once __DIR__ . '/../security.php'; ?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
-    
+
     <header>
-       
+
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
