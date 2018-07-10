@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DC-Relation - <?php echo $title; ?></title>
     <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/initialize.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/initialize.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/bootstrap.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/style.css">
 </head>
 <body>
 
     <header>
-<<<<<<< HEAD
-       
+
     <nav class="navbar navbar-expand-lg bg-dark p-4 bg-navbar">
-  <a class="navbar-brand" href="index.php"><img src="images/DC-relation.png" alt="logo"></a>
+  <a class="navbar-brand" href="<?php echo SITE_URL; ?>index.php"><img src="<?php echo SITE_URL; ?>images/DC-relation.png" alt="logo"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -32,7 +31,6 @@
     </ul>
   </div>
 </nav>
-=======
 
     <div class="container">
         <div class="row">
@@ -47,7 +45,6 @@
         </div>
         </div>
     </div>
->>>>>>> 47c498a3aeb36c28dac945a57fea0bcc0ee72a59
 
     </header>
 

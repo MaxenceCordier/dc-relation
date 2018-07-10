@@ -9,7 +9,10 @@ $type = $_POST["type"];
 
 
 // Insertion des données en BDD
-insertUtilisateur($email, $password, $type);
+$error = insertUtilisateur($email, $password, $type);
 
-// Redirection vers la liste
-header("Location: index.php");
+if (!is_null($error)) {
+  header("Location: index.php?error=" . $error);
+} else {
+  header("Location: index.php");
+}

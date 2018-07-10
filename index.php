@@ -1,36 +1,18 @@
 <?php
 require_once 'lib/functions.php';
 require_once 'model/database.php';
-<<<<<<< HEAD
 
-=======
->>>>>>> 47c498a3aeb36c28dac945a57fea0bcc0ee72a59
-/*
-<<<<<<< HEAD
-*/
-<<<<<<< HEAD
+
 
 getHeader("Accueil");
 ?>
 
-=======
-// Déclaration des variables
 
-/*
-=======
->>>>>>> 0e1811ea631b4ce020ce57e05cafc7efc8966a70
-*/
-getHeader("Accueil");
-?>
-
-<!--<<<<<<< HEAD -->
->>>>>>> 47c498a3aeb36c28dac945a57fea0bcc0ee72a59
 <body class="text-center">
 
 <?php
 
-<<<<<<< HEAD
-=======
+
 if (isset($_SESSION["id"])) {
   $utilisateur = getOneUser($_SESSION["id"]);
   print_r($utilisateur);
@@ -63,7 +45,7 @@ if (isset($_SESSION["id"])) {
         <form action="logout.php" method="post" class="form-signin">
             <button class="btn btn-lg btn-primary btn-block" type="submit">Logout</button>
         </form>
->>>>>>> 47c498a3aeb36c28dac945a57fea0bcc0ee72a59
+
 </body>
 
 <?php getFooter(); ?>

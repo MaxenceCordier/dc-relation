@@ -1,14 +1,14 @@
-<?php require_once __DIR__ . '/../security.php'; ?>
+<?php require_once __DIR__ . '../config/parameters.php'; ?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DC-Relation - <?php echo $title; ?></title>
     <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/initialize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/initialize.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/style.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/bootstrap.css">
 </head>
 <body>
 
