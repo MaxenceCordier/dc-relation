@@ -1,19 +1,19 @@
 <?php
 require_once 'lib/functions.php';
 require_once 'model/database.php';
-
-<<<<<<< HEAD
 /*
+<<<<<<< HEAD
+*/
 // Déclaration des variables
 $list_projects = getAllProjects(3);
-*/
+/*
 =======
 >>>>>>> 0e1811ea631b4ce020ce57e05cafc7efc8966a70
-
+*/
 getHeader("Accueil");
 ?>
 
-<<<<<<< HEAD
+<!--<<<<<<< HEAD -->
 <body class="text-center">
 
 <form action="index.php" method="post" class="form-signin">
@@ -31,7 +31,6 @@ getHeader("Accueil");
 </form>
 
 </body>
-=======
         <form action="" method="post" class="form-signin">
             <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
             <label for="inputEmail" class="sr-only">Email</label>
@@ -53,6 +52,6 @@ getHeader("Accueil");
             <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
         </form>
->>>>>>> 0e1811ea631b4ce020ce57e05cafc7efc8966a70
+
 
 <?php getFooter(); ?>
