@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php require_once __DIR__ . '/../security.php'; ?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+
     <header>
+<<<<<<< HEAD
        
     <nav class="navbar navbar-expand-lg bg-dark p-4 bg-navbar">
   <a class="navbar-brand" href="index.php"><img src="images/DC-relation.png" alt="logo"></a>
@@ -31,6 +32,22 @@
     </ul>
   </div>
 </nav>
+=======
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+            <a href="#"><h1>ESPACE ÉTUDIANTS</h1></a>
+        </div>
+        <div class="col-sm-4">
+        <img src="images/DC-relation.png" alt="logo">
+        </div>
+        <div class="col-sm-4">
+            <a href="#"><h1>ESPACE ENTREPRISES</h1></a>
+        </div>
+        </div>
+    </div>
+>>>>>>> 47c498a3aeb36c28dac945a57fea0bcc0ee72a59
 
     </header>
 
