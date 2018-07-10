@@ -18,5 +18,10 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         if (!is_null($utilisateur["admin"])) {
           header("Location: admin/index.php");
         }
-    }
+        else if (!is_null($utilisateur["etudiant"])) {
+          header("Location: etudiant/profile.php");
+        }
+        else if (!is_null($utilisateur["entreprise"])) {
+          header("Location: entreprise/profile.php");
+        }}
 }
