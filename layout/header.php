@@ -18,6 +18,9 @@
 
     <nav class="navbar navbar-expand-lg bg-dark p-4 bg-navbar">
   <a class="navbar-brand" href="<?php echo SITE_URL; ?>index.php"><img src="<?php echo SITE_URL; ?>images/DC-relation.png" alt="logo"></a>
+  <form action="<?php echo SITE_URL; ?>logout.php" method="post" class="form-signin">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Logout</button>
+  </form>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

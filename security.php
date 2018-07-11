@@ -18,6 +18,12 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         if (!is_null($utilisateur["admin"])) {
           header("Location: admin/index.php");
         }
+        else if (!is_null($utilisateur["etudiant"])) {
+          header("Location: etudiant/index.php");
+        }
+        else if (!is_null($utilisateur["entreprise"])) {
+          header("Location: entreprise/index.php");
+        }
     }
 } else {
     // Si l'utilisateur est déjà connecté

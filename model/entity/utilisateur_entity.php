@@ -283,3 +283,25 @@ WHERE etudiant.id = :id;";
 
     return $stmt->fetchAll();
 }
+
+
+function getContratyByEtudiant(int $id) {
+    /* @var $connection PDO */
+    global $connection;
+
+    $query = "SELECT
+    etudiant.contrat_id,
+    contrat.id,
+    etudiant.id,
+    contrat.label as contratlabel
+    FROM
+    etudiant
+    INNER JOIN contrat ON etudiant.contrat_id = contrat.id
+    WHERE etudiant.id = :id ;";
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+
+    return $stmt->fetch();
+}
