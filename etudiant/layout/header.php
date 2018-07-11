@@ -22,9 +22,7 @@
         <div class="col-sm-4">
         <img src="images/DC-relation.png" alt="logo">
         </div>
-        <div class="col-sm-4">
-            <a href="#"><h1>ESPACE ENTREPRISES</h1></a>
-        </div>
+    
         </div>
     </div>
 

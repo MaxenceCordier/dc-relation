@@ -29,14 +29,26 @@ getHeader("Accueil");
 
  <?php echo $utilisateur['email']; ?>
 
- <form action="edit_etudiant.php" method="post" class="form-signin">
+ <form action="edit_etudiant.php" method="post" class="form-signin" enctype="multipart/form-data">
      <h1 class="h3 mb-3 font-weight-normal">Votre profil</h1>
+     <img src="<?php echo SITE_URL; ?>images/<?php echo $utilisateur['avatar']; ?>" name="avatar">
+     <div>
+            <label for="avatar">Photo</label>
+            <input type="file" name="avatar" id="image">
+             </div>
      <label for="inputEmail">Email</label>
      <input type="email" name="email" id="inputEmail" class="form-control" value="<?php echo $utilisateur['email']; ?>" required autofocus>
      <label for="inputPrenom">Prénom</label>
      <input type="text" name="prenom" id="inputPrenom" class="form-control" value="<?php echo $utilisateur['prenom']; ?>" required autofocus>
      <label for="inputNom">Prénom</label>
      <input type="text" name="nom" id="inputNom" class="form-control" value="<?php echo $utilisateur['nom']; ?>" required autofocus>
+     <label for="telephone">Téléphone</label>
+     <input type="phone" name="telephone" id="telephone" class="form-control" value="<?php echo $utilisateur['telephone']; ?>" required autofocus>
+     <div>
+       <label for="naissance">Date de début de contrat</label>
+       <input type="date" id="naissance" name="naissance"
+              value="<?php echo $utilisateur['date_naissance'] ; ?>" />
+     </div>
      <label for="contrat">Contrat</label>
      <select name="contrat" id="contrat">
       <?php foreach ($contrats as $contrat) : ?>
@@ -48,6 +60,19 @@ getHeader("Accueil");
       <?php endforeach; ?>
 
       </select>
+
+      <div>
+        <label for="start">Date de début de contrat</label>
+        <input type="date" id="start" name="start"
+               value="<?php echo $utilisateur['date_debut_contrat'] ; ?>" />
+      </div>
+
+
+            <div>
+              <label for="end">Date de fin de contrat</label>
+              <input type="date" id="end" name="end"
+                     value="<?php echo $utilisateur['date_fin_contrat'] ; ?>" />
+            </div>
 
       <label for="specialites[]">Specialités</label>
 
@@ -66,7 +91,7 @@ getHeader("Accueil");
 
 
       <label for="departements[]">Départements</label>
-      <select class="form-control select2" name="departements[]" multiple="multiple">
+      <select class="form-control select2-notag" name="departements[]" multiple="multiple">
 
         <?php foreach ($departements as $departement) : ?>
 

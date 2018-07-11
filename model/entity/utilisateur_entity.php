@@ -76,12 +76,20 @@ function getAllEtudiants() {
     /* @var $connection PDO */
     global $connection;
 
-    $query = "SELECT utilisateur.email
-              FROM
-              utilisateur
-              INNER JOIN etudiant
-              ON etudiant.id = utilisateur.id
+    $query = "SELECT
+utilisateur.email,
+etudiant.nom,
+etudiant.prenom,
+etudiant.id,
+etudiant.date_naissance,
+etudiant.cv,
+etudiant.lettre_motivation,
+etudiant.date_debut_contrat,
+etudiant.date_fin_contrat
 
+FROM
+utilisateur
+INNER JOIN etudiant ON etudiant.id = utilisateur.id
               ;";
 
     $stmt = $connection->prepare($query);
@@ -118,14 +126,15 @@ WHERE utilisateur.id = :id   ;";
     return $stmt->fetch();
 }
 
-function editUtilisateur(string $email, int $id) {
+function editUtilisateur(string $email, string $avatar, int $id) {
     /* @var $connection PDO */
     global $connection;
 
-    $query = "UPDATE utilisateur SET email = :email WHERE id = :id;";
+    $query = "UPDATE utilisateur SET email = :email, avatar = :avatar WHERE id = :id;";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":email", $email);
+    $stmt->bindParam(":avatar", $avatar);
     $stmt->bindParam(":id", $id);
     $stmt->execute();
 }
@@ -171,17 +180,22 @@ function insertEtudiantDep(int $etudiant_id, int $departement_id) {
     return $connection->lastInsertId();
 }
 
-function editEtudiant(string $email, string $prenom, string $nom, int $contrat, array $specialites, array $departements, int $id) {
+function editEtudiant(string $email, string $avatar, string $prenom, string $nom, int $contrat, string $date_debut, string $date_fin, string $date_naissance, string $telephone, array $specialites, array $departements, int $id) {
     /* @var $connection PDO */
     global $connection;
 
-    editUtilisateur($email, $id);
+    editUtilisateur($email, $avatar, $id);
 
     $query = "UPDATE etudiant
               SET
               prenom = :prenom,
               nom = :nom,
-              contrat_id = :contrat
+              contrat_id = :contrat,
+              date_debut_contrat = :date_debut,
+              date_fin_contrat = :date_fin,
+              date_naissance = :date_naissance,
+              telephone = :telephone
+
               WHERE id = :id
               ;";
 
@@ -189,6 +203,10 @@ function editEtudiant(string $email, string $prenom, string $nom, int $contrat, 
     $stmt->bindParam(":prenom", $prenom);
     $stmt->bindParam(":nom", $nom);
     $stmt->bindParam(":contrat", $contrat);
+    $stmt->bindParam(":date_debut", $date_debut);
+    $stmt->bindParam(":date_fin", $date_fin);
+    $stmt->bindParam(":date_naissance", $date_naissance);
+    $stmt->bindParam(":telephone", $telephone);
     $stmt->bindParam(":id", $id);
     $stmt->execute();
 
