@@ -30,7 +30,7 @@ function getAllEntity(string $table) {
 
     $stmt = $connection->prepare($query);
     $stmt->execute();
-    
+
     return $stmt->fetchAll();
 }
 
@@ -43,7 +43,7 @@ function getOneEntity(string $table, int $id) {
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":id", $id);
     $stmt->execute();
-    
+
     return $stmt->fetch();
 }
 

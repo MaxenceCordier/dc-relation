@@ -6,6 +6,10 @@ html {
   padding: 0;
 }
 
+label {
+  display:block;
+}
+
 a {
   color: #fff;
   text-decoration: none;

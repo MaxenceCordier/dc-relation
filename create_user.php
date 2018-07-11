@@ -7,7 +7,6 @@ $email = $_POST["email"];
 $password = $_POST["password"];
 $type = $_POST["type"];
 
-
 // Insertion des données en BDD
 $error = insertUtilisateur($email, $password, $type);
 
