@@ -35,7 +35,7 @@ getHeader("Accueil");
      <div>
             <label for="avatar">Photo</label>
             <input type="file" name="avatar" id="image">
-             </div>
+      </div>
      <label for="inputEmail">Email</label>
      <input type="email" name="email" id="inputEmail" class="form-control" value="<?php echo $utilisateur['email']; ?>" required autofocus>
      <label for="inputPrenom">Prénom</label>
@@ -44,6 +44,17 @@ getHeader("Accueil");
      <input type="text" name="nom" id="inputNom" class="form-control" value="<?php echo $utilisateur['nom']; ?>" required autofocus>
      <label for="telephone">Téléphone</label>
      <input type="phone" name="telephone" id="telephone" class="form-control" value="<?php echo $utilisateur['telephone']; ?>" required autofocus>
+     <div>
+            <label for="cv">CV</label>
+            <p><a href="<?php echo SITE_URL?>uploads/<?php echo $utilisateur['cv']; ?>" target="_blank">Voir le CV actuel mis en ligne</a></p>
+            <input type="file" name="cv" id="cv">
+      </div>
+      <div>
+             <label for="lettre">Lettre de motivation</label>
+             <p><a href="<?php echo SITE_URL?>uploads/<?php echo $utilisateur['lettre_motivation']; ?>" target="_blank">Voir la lettre de motivation actuelle mise en ligne</a></p>
+             <input type="file" name="lettre" id="lettre">
+       </div>
+
      <div>
        <label for="naissance">Date de début de contrat</label>
        <input type="date" id="naissance" name="naissance"

@@ -180,7 +180,7 @@ function insertEtudiantDep(int $etudiant_id, int $departement_id) {
     return $connection->lastInsertId();
 }
 
-function editEtudiant(string $email, string $avatar, string $prenom, string $nom, int $contrat, string $date_debut, string $date_fin, string $date_naissance, string $telephone, array $specialites, array $departements, int $id) {
+function editEtudiant(string $email, string $avatar, string $prenom, string $nom, int $contrat, string $date_debut, string $date_fin, string $date_naissance, string $telephone, string $cv, string $lettre_motivation, array $specialites, array $departements, int $id) {
     /* @var $connection PDO */
     global $connection;
 
@@ -194,7 +194,9 @@ function editEtudiant(string $email, string $avatar, string $prenom, string $nom
               date_debut_contrat = :date_debut,
               date_fin_contrat = :date_fin,
               date_naissance = :date_naissance,
-              telephone = :telephone
+              telephone = :telephone,
+              cv = :cv,
+              lettre_motivation = :lettre_motivation
 
               WHERE id = :id
               ;";
@@ -207,6 +209,8 @@ function editEtudiant(string $email, string $avatar, string $prenom, string $nom
     $stmt->bindParam(":date_fin", $date_fin);
     $stmt->bindParam(":date_naissance", $date_naissance);
     $stmt->bindParam(":telephone", $telephone);
+    $stmt->bindParam(":cv", $cv);
+    $stmt->bindParam(":lettre_motivation", $lettre_motivation);
     $stmt->bindParam(":id", $id);
     $stmt->execute();
 

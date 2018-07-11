@@ -20,9 +20,15 @@ $telephone = $_POST["telephone"];
 $avatar = $_FILES['avatar']['name'];
 $image_tmp = $_FILES['avatar']['tmp_name'];
 
+$cv = $_FILES['cv']['name'];
+$cv_tmp = $_FILES['cv']['tmp_name'];
+
+$lettre = $_FILES['lettre']['name'];
+$lettre_tmp = $_FILES['lettre']['tmp_name'];
+
 $utilisateur = getEtudiant($_SESSION["id"]);
 
-// Exemple avec une image fraichement uploadée
+// Image
 if(isset($_FILES['avatar']) && $_FILES['avatar']['error'] == 0)
 {
     $image_path = '../images/' .$avatar;
@@ -36,6 +42,30 @@ else {
   $avatar = $utilisateur['avatar'];
 }
 
-editEtudiant($email, $avatar, $prenom, $nom, $contrat, $date_debut, $date_fin, $date_naissance, $telephone, $specialites, $departements, $id);
+// CV
+if(isset($_FILES['cv']) && $_FILES['cv']['error'] == 0)
+{
+    $cv_path = '../uploads/' .$cv;
+
+    move_uploaded_file($cv_tmp, $cv_path);
+}
+
+else {
+  $cv = $utilisateur['cv'];
+}
+
+// Lettre
+if(isset($_FILES['lettre']) && $_FILES['lettre']['error'] == 0)
+{
+    $lettre_path = '../uploads/' .$lettre;
+
+    move_uploaded_file($lettre_tmp, $lettre_path);
+}
+
+else {
+  $lettre = $utilisateur['lettre_motivation'];
+}
+
+editEtudiant($email, $avatar, $prenom, $nom, $contrat, $date_debut, $date_fin, $date_naissance, $telephone, $cv, $lettre, $specialites, $departements, $id);
 
 header("Location: profile.php");
