@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION)) {
-  //  session_start();
+    session_start();
 }
 
 /**
@@ -22,6 +22,27 @@ function currentUser() {
         return getOneUser($_SESSION["id"]);
     }
     return null;
+}
+
+function currentUserHasRole(string $role) {
+    $user = currentUser();
+
+    if ($user['valide'] != 1) {
+      header("Location: ../index.php");
+    }
+    
+    if(is_null($user[$role])) {
+      if (!is_null($user["admin"])) {
+        header("Location: ../admin/index.php");
+      }
+      else if (!is_null($user["etudiant"])) {
+        header("Location: ../etudiant/index.php");
+      }
+      else if (!is_null($user["entreprise"])) {
+        header("Location: ../entreprise/index.php");
+      }
+      die;
+    }
 }
 
 /**

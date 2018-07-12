@@ -53,5 +53,3 @@
     </header>
 
     <main>
-
-      <?php session_start(); ?>

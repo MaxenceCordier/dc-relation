@@ -83,19 +83,18 @@ function getAllEtudiants() {
     global $connection;
 
     $query = "SELECT
-utilisateur.email,
-etudiant.nom,
-etudiant.prenom,
-etudiant.id,
-etudiant.date_naissance,
-etudiant.cv,
-etudiant.lettre_motivation,
-etudiant.date_debut_contrat,
-etudiant.date_fin_contrat
-
-FROM
-utilisateur
-INNER JOIN etudiant ON etudiant.id = utilisateur.id
+                utilisateur.email,
+                etudiant.nom,
+                etudiant.prenom,
+                etudiant.id,
+                etudiant.date_naissance,
+                etudiant.cv,
+                etudiant.lettre_motivation,
+                etudiant.date_debut_contrat,
+                etudiant.date_fin_contrat,
+                ABS(TIMESTAMPDIFF(MONTH, etudiant.date_fin_contrat, etudiant.date_debut_contrat)) AS duree_contrat
+              FROM utilisateur
+              INNER JOIN etudiant ON etudiant.id = utilisateur.id
               ;";
 
     $stmt = $connection->prepare($query);

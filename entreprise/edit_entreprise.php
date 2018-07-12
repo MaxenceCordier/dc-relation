@@ -1,8 +1,8 @@
 <?php
-session_start();
-
 require_once '../lib/functions.php';
 require_once '../model/database.php';
+
+currentUserHasRole("entreprise");
 
 //Récupérer les données du formulaire
 $avatar = $_FILES['avatar']['name'];

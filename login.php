@@ -19,10 +19,10 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
           header("Location: admin/gestion_users.php");
         }
         else if (!is_null($utilisateur["etudiant"]) && ($utilisateur['valide'] == 1)) {
-          header("Location: etudiant/profile.php");
+          header("Location: etudiant/index.php");
         }
         else if (!is_null($utilisateur["entreprise"]) && ($utilisateur['valide'] == 1)) {
-          header("Location: entreprise/profile.php");
+          header("Location: entreprise/index.php");
         }
         else {
         header("Location: index.php?error=notvalide");
