@@ -1,5 +1,6 @@
-<?php require_once 'layout/header.php'; ?>
+<?php
+session_start();
 
-<h1>Admin</h1>
-
-<?php require_once 'layout/footer.php'; ?>
+require_once '../lib/functions.php';
+require_once '../model/database.php';
+require_once 'security.php';

@@ -2,35 +2,30 @@
 
 session_start();
 
-require_once __DIR__ . "/model/database.php";
+require_once "../model/database.php";
 
-// L'utilisateur essai de se connecter
-if (isset($_POST["email"]) && isset($_POST["password"])) {
-    $email = $_POST["email"];
-    $password = $_POST["password"];
 
-    // Recherche l'utilisateur en BDD
-    $utilisateur = getUserByEmailPassword($email, $password);
+if( isset(($_SESSION['id'])) ){
+  // Recherche l'utilisateur en BDD
+  $utilisateur = getOneUser($_SESSION['id']);
 
-    if (isset($utilisateur["id"])) {
-        $_SESSION["id"] = $utilisateur["id"];
+  if (isset($utilisateur["id"])) {
+      $_SESSION["id"] = $utilisateur["id"];
 
-        if (!is_null($utilisateur["admin"])) {
-          header("Location: admin/index.php");
-        }
-    }
-} else {
-    // Si l'utilisateur est déjà connecté
-    if (isset($_SESSION["id"])) {
-        $utilisateur = getOneUser($_SESSION["id"]);
-    }
+      if (!is_null($utilisateur["admin"])) {
+        header("Location: ../admin/index.php");
+      }
+      else if (!is_null($utilisateur["etudiant"]) && ($utilisateur['valide'] == 1)) {
+        header("Location: profile.php");
+      }
+      else if (!is_null($utilisateur["entreprise"]) && ($utilisateur['valide'] == 1)) {
+        header("Location: ../entreprise/index.php");
+      }
+
+  }
+
 }
-// Si l'utilisateur n'est pas connecté
 
-/*
-if (!isset($utilisateur["id"])) {
-    header("Location: login.php");
-} else if ($utilisateur["admin"] == 0) {
-    // Si il est connecté mais pas admin
-    header("Location: index.php");
-}*/
+else {
+  header("Location: ../index.php");
+}

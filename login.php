@@ -16,12 +16,16 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         $_SESSION["id"] = $utilisateur["id"];
 
         if (!is_null($utilisateur["admin"])) {
-          header("Location: admin/index.php");
+          header("Location: admin/gestion_users.php");
         }
-        else if (!is_null($utilisateur["etudiant"])) {
+        else if (!is_null($utilisateur["etudiant"]) && ($utilisateur['valide'] == 1)) {
           header("Location: etudiant/profile.php");
         }
-        else if (!is_null($utilisateur["entreprise"])) {
+        else if (!is_null($utilisateur["entreprise"]) && ($utilisateur['valide'] == 1)) {
           header("Location: entreprise/profile.php");
-        }}
+        }
+        else {
+        header("Location: index.php?error=notvalide");
+        }
+    }
 }

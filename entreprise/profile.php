@@ -12,7 +12,6 @@ getHeader("Accueil");
 
 
 
-
  <?php echo $entreprise['email']; ?>
 
  <div>

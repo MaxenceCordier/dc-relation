@@ -1,4 +1,3 @@
-<?php require_once __DIR__ . '/../security.php'; ?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -54,3 +53,5 @@
     </header>
 
     <main>
+
+      <?php session_start(); ?>

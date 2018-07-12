@@ -13,13 +13,13 @@ if( isset(($_SESSION['id'])) ){
       $_SESSION["id"] = $utilisateur["id"];
 
       if (!is_null($utilisateur["admin"])) {
-        header("Location: gestion_users.php");
+        header("Location: ../admin/index.php");
       }
       else if (!is_null($utilisateur["etudiant"]) && ($utilisateur['valide'] == 1)) {
         header("Location: ../etudiant/index.php");
       }
       else if (!is_null($utilisateur["entreprise"]) && ($utilisateur['valide'] == 1)) {
-        header("Location: ../entreprise/index.php");
+        header("Location: profile.php");
       }
 
   }

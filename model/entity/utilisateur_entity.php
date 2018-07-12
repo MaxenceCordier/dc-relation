@@ -28,9 +28,15 @@ function getOneUser(int $id) {
     /* @var $connection PDO */
     global $connection;
 
-    $query = "SELECT *
+    $query = "SELECT utilisateur.*,
+    admin.id AS admin,
+    etudiant.id AS etudiant,
+    entreprise.id AS entreprise
             FROM utilisateur
-            WHERE id = :id;";
+            LEFT JOIN admin ON admin.id = utilisateur.id
+            LEFT JOIN etudiant ON etudiant.id = utilisateur.id
+            LEFT JOIN entreprise ON entreprise.id = utilisateur.id
+            WHERE utilisateur.id = :id;";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":id", $id);
@@ -304,4 +310,33 @@ function getContratyByEtudiant(int $id) {
     $stmt->execute();
 
     return $stmt->fetch();
+}
+
+function getUtilisateursNotValide() {
+    /* @var $connection PDO */
+    global $connection;
+
+    $query = "SELECT
+    utilisateur.id as user_id,
+    utilisateur.email as user_email,
+    utilisateur.valide as user_valide
+    FROM
+    utilisateur
+    WHERE valide = 0 ;";
+
+    $stmt = $connection->prepare($query);
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+}
+
+function validationUtilisateur(int $id, int $validation) {
+  global $connection;
+
+  $query = "UPDATE utilisateur SET valide = :validation WHERE id = :id;";
+
+  $stmt = $connection->prepare($query);
+  $stmt->bindParam(":validation", $validation);
+  $stmt->bindParam(":id", $id);
+  $stmt->execute();
 }
