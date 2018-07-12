@@ -3,7 +3,7 @@ session_start();
 
 require_once '../lib/functions.php';
 require_once '../model/database.php';
-require_once 'security.php';
+//require_once 'security.php';
 
 $validation = $_POST["test"];
 $id = $_POST["user_id"];
